@@ -12,6 +12,6 @@ public class HelloActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.hello);
-        setTitle("Hello");
+        setTitle(R.string.hello_name);
     }
 }

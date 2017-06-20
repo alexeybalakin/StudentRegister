@@ -5,7 +5,7 @@
               android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/loginRegEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -14,7 +14,7 @@
         />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/pasRegEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -23,11 +23,12 @@
         />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/pasConfirmEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPassword"
+        android:hint="Comfirm password"
         />
 
     <LinearLayout
@@ -36,13 +37,13 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/okRegButton"
             android:layout_width="175dp"
             android:layout_height="wrap_content"
             android:text="OK"/>
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/cancelRegButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
