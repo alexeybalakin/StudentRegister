@@ -58,6 +58,7 @@ public class RegistrationActivity extends Activity {
                     MainActivity.logins.put(loginRegEditText.getText().toString(), pasRegEditText.getText().toString());
                     Toast.makeText(RegistrationActivity.this,
                             "Регистрация прошла успешно!", Toast.LENGTH_SHORT).show();
+                    finish();
                 }
             }
         });
