@@ -16,9 +16,11 @@ import java.util.Map;
 
 public class RegistrationActivity extends Activity {
     private Button okRegButton;
+    private Button cancelRegButton;
     private EditText loginRegEditText;
     private EditText pasRegEditText;
     private EditText pasConfirmEditText;
+
 
 
     @Override
@@ -28,6 +30,7 @@ public class RegistrationActivity extends Activity {
         setTitle(R.string.reg_name);
 
         okRegButton = (Button) findViewById(R.id.okRegButton);
+        cancelRegButton = (Button) findViewById(R.id.cancelRegButton);
         loginRegEditText = (EditText)  findViewById(R.id.loginRegEditText);
         pasRegEditText = (EditText)  findViewById(R.id.pasRegEditText);
         pasConfirmEditText = (EditText)  findViewById(R.id.pasConfirmEditText);
@@ -56,6 +59,15 @@ public class RegistrationActivity extends Activity {
                     Toast.makeText(RegistrationActivity.this,
                             "Регистрация прошла успешно!", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        cancelRegButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loginRegEditText.setText("");
+                pasRegEditText.setText("");
+                pasConfirmEditText.setText("");
             }
         });
     }
