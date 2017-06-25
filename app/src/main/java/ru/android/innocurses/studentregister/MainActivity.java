@@ -12,6 +12,8 @@ import android.widget.Toast;
 import java.util.HashMap;
 import java.util.Map;
 
+import ru.android.innocurses.studentregister.Managers.ManagerGroups;
+
 public class MainActivity extends Activity {
     private Button regButton;
     private Button okButton;
@@ -43,17 +45,20 @@ public class MainActivity extends Activity {
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!logins.containsKey(loginEditText.getText().toString())){
-                    Toast.makeText(MainActivity.this,
-                            "Пользователь с таким логином не существует", Toast.LENGTH_SHORT).show();
-                }
-                else if (!logins.get(loginEditText.getText().toString()).equals(passEditText.getText().toString())){
-                    Toast.makeText(MainActivity.this,
-                            "Не верный пароль", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    startActivity(new Intent(context, HelloActivity.class));
-                }
+
+                startActivity(new Intent(context, GroupsActivity.class));
+
+//                if(!logins.containsKey(loginEditText.getText().toString())){
+//                    Toast.makeText(MainActivity.this,
+//                            "Пользователь с таким логином не существует", Toast.LENGTH_SHORT).show();
+//                }
+//                else if (!logins.get(loginEditText.getText().toString()).equals(passEditText.getText().toString())){
+//                    Toast.makeText(MainActivity.this,
+//                            "Не верный пароль", Toast.LENGTH_SHORT).show();
+//                }
+//                else {
+//                    startActivity(new Intent(context, ProfileActivity.class));
+//                }
             }
         });
 
