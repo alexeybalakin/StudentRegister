@@ -30,7 +30,9 @@ public class StudentsActivity extends Activity {
         lvStudents.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                startActivity(new Intent(StudentsActivity.this, ProfileActivity.class));
+                Intent i = new Intent(StudentsActivity.this, ProfileActivity.class);
+                i.putExtra("index", position);
+                startActivity(i);
             }
         });
 

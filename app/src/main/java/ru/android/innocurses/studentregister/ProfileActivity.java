@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import ru.android.innocurses.studentregister.Adapters.JournalListAdapter;
+import ru.android.innocurses.studentregister.Managers.ManagerGroups;
 
 /**
  * Created by admin on 22.06.2017.
@@ -21,10 +22,22 @@ public class ProfileActivity extends Activity {
     private ListView listContacts;
     private ListView listJournal;
     private Button bEdit;
+    private TextView tvSurname;
+    private TextView tvName;
+    private TextView tvPatronymic;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile);
+
+        int index = getIntent().getIntExtra("index",0);
+
+        tvSurname = (TextView) findViewById(R.id.tvSurname);
+        tvSurname.setText(ManagerGroups.groups.get("Group#1").getStudents().get(index).getSurname());
+        tvName = (TextView) findViewById(R.id.tvName);
+        tvName.setText(ManagerGroups.groups.get("Group#1").getStudents().get(index).getFirstName());
+        tvPatronymic = (TextView) findViewById(R.id.tvPatronymic);
+        tvPatronymic.setText(ManagerGroups.groups.get("Group#1").getStudents().get(index).getSecondName());
 
         bEdit = (Button) findViewById(R.id.bEdit);
         bEdit.setOnClickListener(new View.OnClickListener() {
