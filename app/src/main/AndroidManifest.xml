@@ -26,6 +26,10 @@
         </activity>
         <activity android:name=".UpdateStudentActivity">
         </activity>
+        <activity android:name=".AdminActivity">
+        </activity>
+        <activity android:name=".filterActivity">
+        </activity>
     </application>
 
 </manifest>

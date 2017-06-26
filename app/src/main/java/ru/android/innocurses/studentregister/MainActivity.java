@@ -45,8 +45,11 @@ public class MainActivity extends Activity {
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(loginEditText.getText().toString().equals("admin") && passEditText.getText().toString().equals("admin")){
+                    startActivity(new Intent(context,AdminActivity.class));
+                }
 
-                startActivity(new Intent(context, GroupsActivity.class));
+                else startActivity(new Intent(context, GroupsActivity.class));
 
 //                if(!logins.containsKey(loginEditText.getText().toString())){
 //                    Toast.makeText(MainActivity.this,
