@@ -28,9 +28,11 @@
         </activity>
         <activity android:name=".AdminActivity">
         </activity>
-        <activity android:name=".FilterGroupsActivity">
+        <activity android:name=".FilterGroupsActivity"
+            android:launchMode="singleTask">
         </activity>
-        <activity android:name=".FilterStudentsActivity">
+        <activity android:name=".FilterStudentsActivity"
+                  android:launchMode="singleTask">
         </activity>
     </application>
 
