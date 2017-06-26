@@ -1,8 +1,10 @@
 package ru.android.innocurses.studentregister;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -39,6 +41,15 @@ public class FilterGroupsActivity extends Activity {
             @Override
             public void onClick(View v) {
                 arrayAdapter.getFilter().filter(etFilter.getText());
+            }
+        });
+
+        lvGroups.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(FilterGroupsActivity.this, FilterStudentsActivity.class);
+                intent.putExtra("groupName", arrayAdapter.getItem(position));
+                startActivity(intent);
             }
         });
 

@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import ru.android.innocurses.studentregister.Managers.ManagerGroups;
 import ru.android.innocurses.studentregister.Models.Group;
@@ -18,11 +19,16 @@ public class FilterStudentsActivity extends Activity {
     ListView lvGroups;
     EditText etFilter;
     Button bFilter;
-    ArrayList<Student> students = new ArrayList<>(ManagerGroups.groups.get("Group#1").getStudents());
+    List<Student> students = new ArrayList<>(ManagerGroups.groups.get("Group#1").getStudents());
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filter_students);
+
+        Group group = (Group) getIntent().getSerializableExtra("groupName");
+
+         students = group.getStudents();
+
         lvGroups = (ListView) findViewById(R.id.lvFilterStudents);
         etFilter = (EditText)findViewById(R.id.etFilterStudents);
         bFilter = (Button)findViewById(R.id.btFilterStudents);

@@ -2,6 +2,7 @@ package ru.android.innocurses.studentregister.Models;
 
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.List;
  */
 
 
-public class Student {
+public class Student implements Serializable {
 
     private Date dateOfBirth;
     private  Long id;

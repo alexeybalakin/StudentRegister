@@ -1,12 +1,13 @@
 package ru.android.innocurses.studentregister.Models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Alexey Balakin on 08.06.2017.
  */
-public class Group {
+public class Group implements Serializable {
     private String name;
     private Long id;
     private List<Student> students;
