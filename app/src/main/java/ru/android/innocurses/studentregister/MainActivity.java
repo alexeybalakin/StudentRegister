@@ -14,6 +14,11 @@ import java.util.Map;
 
 import ru.android.innocurses.studentregister.Managers.ManagerGroups;
 
+import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK;
+import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
+import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
+import static android.content.Intent.FLAG_ACTIVITY_SINGLE_TOP;
+
 public class MainActivity extends Activity {
     private Button regButton;
     private Button okButton;

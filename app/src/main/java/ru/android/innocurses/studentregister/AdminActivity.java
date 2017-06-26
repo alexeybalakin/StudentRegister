@@ -23,17 +23,18 @@ public class AdminActivity extends Activity {
         bAdminGroups.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AdminActivity.this,GroupsActivity.class ));
+                startActivity(new Intent(AdminActivity.this,FilterGroupsActivity.class));
             }
         });
 
         bAdminStudents.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AdminActivity.this,StudentsActivity.class ));
+                startActivity(new Intent(AdminActivity.this,FilterStudentsActivity.class ));
             }
         });
-        
+
     }
+
 
 }

@@ -9,6 +9,7 @@ import ru.android.innocurses.studentregister.Models.Student;
  */
 public class ManagerStudents {
 
+
     public static Group addStudent(Group group, Student student){
         group.getStudents().add(student);
         return group;

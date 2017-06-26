@@ -8,11 +8,11 @@ import java.util.Map;
  */
 public class Journal {
     private Long id;
-    private Lesson lesson;
+    private Long lessonId;
     private Map<Student,Boolean> present;
 
-    public Journal(Lesson lesson, Map<Student, Boolean> present) {
-        this.lesson = lesson;
+    public Journal(Long lessonId, Map<Student, Boolean> present) {
+        this.lessonId = lessonId;
         this.present = present;
         this.id = System.nanoTime();
     }
@@ -21,12 +21,12 @@ public class Journal {
         return id;
     }
 
-    public Lesson getLesson() {
-        return lesson;
+    public Long getLessonId() {
+        return lessonId;
     }
 
-    public void setLesson(Lesson lesson) {
-        this.lesson = lesson;
+    public void setLessonId(Long lessonId) {
+        this.lessonId = lessonId;
     }
 
     public Map<Student, Boolean> getPresent() {

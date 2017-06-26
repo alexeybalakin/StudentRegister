@@ -32,6 +32,7 @@ public class ManagerGroups {
         students.add(new Student(new Date(),3l,"Сидор", "Сидорович","Сидоров"));
         students.add(new Student(new Date(),4l,"Николай", "Николаевич","Николаев"));
         students.add(new Student(new Date(),5l,"Семен", "Семенович","Семенов"));
+        students.add(new Student(new Date(),5l,"Семен", "Андреевич","Зеленкин"));
 
         groups.get("Group#1").setStudents(students);
 
