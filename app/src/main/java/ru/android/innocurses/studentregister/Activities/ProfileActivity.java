@@ -33,7 +33,7 @@ public class ProfileActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        //Получаем из интента индекс студента
+        //Получаем из интента студента для которого будем выводит профиль
         student = (Student) getIntent().getSerializableExtra("student");
 
         tvSurname = (TextView) findViewById(R.id.tvSurname);
