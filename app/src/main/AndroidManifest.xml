@@ -9,30 +9,38 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".Activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".ProfileActivity">
+        <activity android:name=".Activities.ProfileActivity">
         </activity>
-        <activity android:name=".RegistrationActivity">
+        <activity android:name=".Activities.RegistrationActivity">
         </activity>
-        <activity android:name=".GroupsActivity">
+        <activity android:name=".Activities.GroupsActivity">
         </activity>
-        <activity android:name=".StudentsActivity">
+        <activity android:name=".Activities.StudentsActivity">
         </activity>
-        <activity android:name=".UpdateStudentActivity">
+        <activity android:name=".Activities.UpdateStudentActivity">
         </activity>
-        <activity android:name=".AdminActivity">
+        <activity android:name=".Activities.AdminActivity">
         </activity>
-        <activity android:name=".FilterGroupsActivity"
-            android:launchMode="singleTask">
+        <activity
+            android:name=".Activities.FilterGroupsActivity"
+            android:launchMode="singleTask"
+            >
         </activity>
-        <activity android:name=".FilterStudentsActivity"
-                  android:launchMode="singleTask">
+        <activity
+            android:name=".Activities.FilterStudentsActivity"
+            android:launchMode="singleTask"
+            >
+        </activity>
+        <activity android:name=".Activities.FilterJournalActivity"
+                  android:launchMode="singleTask"
+            >
         </activity>
     </application>
 

@@ -1,4 +1,4 @@
-package ru.android.innocurses.studentregister;
+package ru.android.innocurses.studentregister.Activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import ru.android.innocurses.studentregister.Adapters.JournalListAdapter;
 import ru.android.innocurses.studentregister.Managers.ManagerGroups;
+import ru.android.innocurses.studentregister.Models.Student;
+import ru.android.innocurses.studentregister.R;
 
 /**
  * Created by admin on 22.06.2017.
@@ -25,20 +27,21 @@ public class ProfileActivity extends Activity {
     private TextView tvSurname;
     private TextView tvName;
     private TextView tvPatronymic;
+    private Student student;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.profile);
+        setContentView(R.layout.activity_profile);
 
         //Получаем из интента индекс студента
-        int index = getIntent().getIntExtra("index",0);
+        student = (Student) getIntent().getSerializableExtra("student");
 
         tvSurname = (TextView) findViewById(R.id.tvSurname);
-        tvSurname.setText(ManagerGroups.groups.get("Group#1").getStudents().get(index).getSurname());
+        tvSurname.setText(student.getSurname());
         tvName = (TextView) findViewById(R.id.tvName);
-        tvName.setText(ManagerGroups.groups.get("Group#1").getStudents().get(index).getFirstName());
+        tvName.setText(student.getFirstName());
         tvPatronymic = (TextView) findViewById(R.id.tvPatronymic);
-        tvPatronymic.setText(ManagerGroups.groups.get("Group#1").getStudents().get(index).getSecondName());
+        tvPatronymic.setText(student.getSecondName());
 
         bEdit = (Button) findViewById(R.id.bEdit);
         bEdit.setOnClickListener(new View.OnClickListener() {

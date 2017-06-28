@@ -1,14 +1,13 @@
-package ru.android.innocurses.studentregister;
+package ru.android.innocurses.studentregister.Activities;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.os.DropBoxManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.Map;
+import ru.android.innocurses.studentregister.R;
 
 /**
  * Created by admin on 20.06.2017.
@@ -26,7 +25,7 @@ public class RegistrationActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.registration);
+        setContentView(R.layout.activity_registration);
         setTitle(R.string.reg_name);
 
         okRegButton = (Button) findViewById(R.id.okRegButton);

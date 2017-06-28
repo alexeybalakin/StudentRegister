@@ -1,10 +1,14 @@
-package ru.android.innocurses.studentregister;
+package ru.android.innocurses.studentregister.Activities;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import ru.android.innocurses.studentregister.R;
+
+import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 
 public class AdminActivity extends Activity {
     Button bAdminGroups;
@@ -30,7 +34,14 @@ public class AdminActivity extends Activity {
         bAdminStudents.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AdminActivity.this,FilterStudentsActivity.class ));
+                startActivity(new Intent(AdminActivity.this,FilterStudentsActivity.class));
+            }
+        });
+
+        bAdminJournals.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AdminActivity.this, FilterJournalActivity.class));
             }
         });
 

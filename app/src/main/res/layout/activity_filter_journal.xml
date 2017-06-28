@@ -5,25 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="ru.android.innocurses.studentregister.Activities.FilterStudentsActivity">
+    tools:context="ru.android.innocurses.studentregister.Activities.FilterJournalActivity">
 
     <EditText
-        android:id="@+id/etFilterStudents"
+        android:id="@+id/etFilterJournal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         />
 
     <Button
-        android:id="@+id/btFilterStudents"
+        android:id="@+id/btFilterJournal"
         android:text="Filter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <ListView
-        android:id="@+id/lvFilterStudents"
+        android:id="@+id/lvFilterJournal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
     </ListView>
+
 </LinearLayout>
