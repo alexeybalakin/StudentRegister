@@ -17,28 +17,12 @@ import ru.android.innocurses.studentregister.Models.Group;
 import ru.android.innocurses.studentregister.R;
 
 public class GroupsActivity extends Activity {
-    private RecyclerView rvGroups;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_groups);
-
-
-//         rvGroups = (RecyclerView) findViewById(R.id.rvGroups);
-//
-//        ArrayList<Group> groups = new ArrayList<>(ManagerGroups.groups.values());
-//
-//        GroupListAdapter groupListAdapter = new GroupListAdapter(groups);
-//        rvGroups.setAdapter(groupListAdapter);
-//        rvGroups.setLayoutManager(new LinearLayoutManager(this));
-//        groupListAdapter.onItemClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(GroupsActivity.this, StudentsActivity.class));
-//            }
-//        });
 
     }
 

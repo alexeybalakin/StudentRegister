@@ -31,35 +31,35 @@ public class FilterGroupsActivity extends Activity {
         setContentView(R.layout.activity_filter_groups);
         Log.i("MyLog", "onCreate_Groups");
 
-        lvGroups = (ListView) findViewById(R.id.lvFilterGroups);
+       // lvGroups = (ListView) findViewById(R.id.lvFilterGroups);
         etFilter = (EditText) findViewById(R.id.etFilterGroups);
         bFilter = (Button) findViewById(R.id.btFilterGroups);
 
         //Создаем адаптер
-        arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, groups);
-        if (savedInstanceState != null){
-            etFilter.setText(savedInstanceState.getString("filterGroups"));
-            arrayAdapter.getFilter().filter(etFilter.getText());
-        }
-        //Присваиваем адаптер списку
-        lvGroups.setAdapter(arrayAdapter);
+//        arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, groups);
+//        if (savedInstanceState != null){
+//            etFilter.setText(savedInstanceState.getString("filterGroups"));
+//            arrayAdapter.getFilter().filter(etFilter.getText());
+//        }
+//        //Присваиваем адаптер списку
+//        lvGroups.setAdapter(arrayAdapter);
 
 
-        bFilter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                arrayAdapter.getFilter().filter(etFilter.getText());
-            }
-        });
+//        bFilter.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                arrayAdapter.getFilter().filter(etFilter.getText());
+//            }
+//        });
 
-        lvGroups.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(FilterGroupsActivity.this, FilterStudentsActivity.class);
-                intent.putExtra("group", arrayAdapter.getItem(position));
-                startActivity(intent);
-            }
-        });
+//        lvGroups.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                Intent intent = new Intent(FilterGroupsActivity.this, FilterStudentsActivity.class);
+//                intent.putExtra("group", arrayAdapter.getItem(position));
+//                startActivity(intent);
+//            }
+//        });
 
     }
 
@@ -73,7 +73,7 @@ public class FilterGroupsActivity extends Activity {
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         etFilter.setText(savedInstanceState.getString("filterGroups"));
-        arrayAdapter.getFilter().filter(etFilter.getText());
+//        arrayAdapter.getFilter().filter(etFilter.getText());
 
     }
 }
