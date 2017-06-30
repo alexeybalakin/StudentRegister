@@ -61,19 +61,19 @@ public class ProfileActivity extends Activity {
             }
         });
 
-        listContacts = (ListView) findViewById(R.id.listContacts);
-        ArrayAdapter<String> arrayAdapterContacts =
-                new ArrayAdapter<String>(ProfileActivity.this,
-                        android.R.layout.simple_list_item_1,
-                        new String[] { "+7 (981) 777-77-77", "@thisIsATest", "vk.com/id01"});
-        listContacts.setAdapter(arrayAdapterContacts);
-        listContacts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                TextView clicked = (TextView) view;
-                Toast.makeText(ProfileActivity.this, clicked.getText().toString(), Toast.LENGTH_SHORT).show();
-            }
-        });
+//        listContacts = (ListView) findViewById(R.id.listContacts);
+//        ArrayAdapter<String> arrayAdapterContacts =
+//                new ArrayAdapter<String>(ProfileActivity.this,
+//                        android.R.layout.simple_list_item_1,
+//                        new String[] { "+7 (981) 777-77-77", "@thisIsATest", "vk.com/id01"});
+//        listContacts.setAdapter(arrayAdapterContacts);
+//        listContacts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                TextView clicked = (TextView) view;
+//                Toast.makeText(ProfileActivity.this, clicked.getText().toString(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
 //        Fragment fragment = getFragmentManager().findFragmentById(R.id.fragmentJournals);
 //        Bundle bundle = new Bundle();

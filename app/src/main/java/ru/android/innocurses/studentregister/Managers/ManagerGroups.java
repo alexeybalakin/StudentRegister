@@ -34,8 +34,8 @@ public class ManagerGroups {
         List<Contact> contactlist = new ArrayList<>();
         contactlist.add(new Contact("+79061234590", ContactType.PHONE));
         contactlist.add(new Contact("mymail@gmail.com", ContactType.EMAIL));
-        contactlist.add(new Contact("@student", ContactType.TELEGRAM));
-        contactlist.add(new Contact("mymail@gmail.com", ContactType.SKYPE));
+        contactlist.add(new Contact("@student_tele", ContactType.TELEGRAM));
+        contactlist.add(new Contact("student_skype", ContactType.SKYPE));
         contactlist.add(new Contact("vk.com", ContactType.VK));
 
         //Добавляем студентов в группу #1

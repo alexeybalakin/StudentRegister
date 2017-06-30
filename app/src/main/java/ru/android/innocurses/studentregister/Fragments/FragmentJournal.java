@@ -42,7 +42,6 @@ public class FragmentJournal extends Fragment{
         for (Journal journal: ManagerGroups.journalList){
             Log.i("Mylog",""+ (student.getId().equals(journal.getStudent().getId())));
             if(student.equals(journal.getStudent())) {
-
                 journalForStudent.add(journal);
             }
         }

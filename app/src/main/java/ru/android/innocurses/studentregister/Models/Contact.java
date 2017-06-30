@@ -1,9 +1,11 @@
 package ru.android.innocurses.studentregister.Models;
 
+import java.io.Serializable;
+
 /**
  * Created by Alexey Balakin on 08.06.2017.
  */
-public class Contact {
+public class Contact implements Serializable{
     private String value;
     private ContactType type;
 

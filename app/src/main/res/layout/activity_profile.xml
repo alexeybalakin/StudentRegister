@@ -100,14 +100,12 @@
                 android:layout_height="wrap_content"
                 android:text="Contacts"
                 />
-
-<ListView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/listContacts"
-    >
-
-</ListView>
+            <fragment
+                android:id="@+id/fragmentContacts"
+                android:name="ru.android.innocurses.studentregister.Fragments.FragmetContact"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
