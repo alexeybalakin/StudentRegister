@@ -78,7 +78,6 @@
             android:text="Group"
             android:layout_toLeftOf="@id/bDelete"
             android:layout_above="@id/bEdit"
-
             />
 
 
@@ -121,12 +120,12 @@
                 android:layout_height="wrap_content"
                 android:text="Journal"
                 />
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/journalList"
-            >
-        </ListView>
+            <fragment
+                android:id="@+id/fragmentJournals"
+                android:name="ru.android.innocurses.studentregister.Fragments.FragmentJournal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
     </LinearLayout>
     </LinearLayout>
 </LinearLayout>

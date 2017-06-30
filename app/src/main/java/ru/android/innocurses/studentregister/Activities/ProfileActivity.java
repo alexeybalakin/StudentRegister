@@ -1,6 +1,7 @@
 package ru.android.innocurses.studentregister.Activities;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -24,6 +25,7 @@ public class ProfileActivity extends Activity {
     private ListView listContacts;
     private ListView listJournal;
     private Button bEdit;
+    private Button bGroup;
     private TextView tvSurname;
     private TextView tvName;
     private TextView tvPatronymic;
@@ -42,6 +44,14 @@ public class ProfileActivity extends Activity {
         tvName.setText(student.getFirstName());
         tvPatronymic = (TextView) findViewById(R.id.tvPatronymic);
         tvPatronymic.setText(student.getSecondName());
+        bGroup = (Button) findViewById(R.id.bGroup);
+
+        bGroup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ProfileActivity.this,FilterGroupsActivity.class));
+            }
+        });
 
         bEdit = (Button) findViewById(R.id.bEdit);
         bEdit.setOnClickListener(new View.OnClickListener() {
@@ -65,12 +75,17 @@ public class ProfileActivity extends Activity {
             }
         });
 
-        listJournal = (ListView) findViewById(R.id.journalList);
-        JournalListAdapter journalListAdapter = new JournalListAdapter();
-        ArrayAdapter<String> arrayAdapterJournal=
-                new ArrayAdapter<String>(ProfileActivity.this,android.R.layout.simple_list_item_1,
-                        new String[]{"Java","Android","C++"});
-        listJournal.setAdapter(arrayAdapterJournal);
+//        Fragment fragment = getFragmentManager().findFragmentById(R.id.fragmentJournals);
+//        Bundle bundle = new Bundle();
+//        bundle.putSerializable("student", student);
+//        fragment.setArguments(bundle);
+
+//        listJournal = (ListView) findViewById(R.id.journalList);
+//        JournalListAdapter journalListAdapter = new JournalListAdapter();
+//        ArrayAdapter<String> arrayAdapterJournal=
+//                new ArrayAdapter<String>(ProfileActivity.this,android.R.layout.simple_list_item_1,
+//                        new String[]{"Java","Android","C++"});
+//        listJournal.setAdapter(arrayAdapterJournal);
 
     }
 }

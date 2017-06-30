@@ -3,11 +3,14 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+<fragment
+    android:id="@+id/fragmentStudents"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:name="ru.android.innocurses.studentregister.Fragments.FragmentStudent"
     >
 
-    <ListView
-        android:id="@+id/lvStudents"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+</fragment>
 </LinearLayout>

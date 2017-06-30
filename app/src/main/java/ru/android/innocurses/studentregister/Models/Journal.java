@@ -7,33 +7,37 @@ import java.util.Map;
  * Created by Alexey Balakin on 08.06.2017.
  */
 public class Journal {
-    private Long id;
-    private Long lessonId;
-    private Map<Student,Boolean> present;
+    private Lesson lesson;
+    private Student student;
+    private boolean present;
 
-    public Journal(Long lessonId, Map<Student, Boolean> present) {
-        this.lessonId = lessonId;
+    public Journal(Lesson lesson, Student student, boolean present) {
+        this.lesson = lesson;
+        this.student = student;
         this.present = present;
-        this.id = System.nanoTime();
     }
 
-    public Long getId() {
-        return id;
+    public Lesson getLesson() {
+        return lesson;
     }
 
-    public Long getLessonId() {
-        return lessonId;
+    public void setLesson(Lesson lesson) {
+        this.lesson = lesson;
     }
 
-    public void setLessonId(Long lessonId) {
-        this.lessonId = lessonId;
+    public Student getStudent() {
+        return student;
     }
 
-    public Map<Student, Boolean> getPresent() {
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public boolean isPresent() {
         return present;
     }
 
-    public void setPresent(Map<Student, Boolean> present) {
+    public void setPresent(boolean present) {
         this.present = present;
     }
 }

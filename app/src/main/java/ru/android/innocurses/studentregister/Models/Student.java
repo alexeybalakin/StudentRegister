@@ -99,7 +99,7 @@ public class Student implements Serializable {
     public boolean equals(Object obj) {
         if(obj == null) return  false;
         if (!(obj instanceof Student)) return false;
-        if(this.id !=((Student)obj).getId()) return false;
+        if(!this.id.equals(((Student)obj).getId())) return false;
         return true;
     }
 

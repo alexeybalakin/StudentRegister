@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import ru.android.innocurses.studentregister.Models.Group;
@@ -18,11 +19,13 @@ import ru.android.innocurses.studentregister.R;
  */
 
 public class GroupListAdapter extends RecyclerView.Adapter {
-    private final List groups;
+    private  List<Group> dataSet;
+    private  final List<Group> cleanCopyDataSet;
     private View.OnClickListener itemClickListener;
 
     public GroupListAdapter(List<Group> groups) {
-        this.groups = groups;
+        this.dataSet = groups;
+        this.cleanCopyDataSet = groups;
     }
 
     @Override
@@ -33,22 +36,22 @@ public class GroupListAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ((GroupHolder) holder).bind((Group) groups.get(position));
+        ((GroupHolder) holder).bind((Group) dataSet.get(position));
     }
 
 
     @Override
     public int getItemCount() {
-        return groups.size();
+        return dataSet.size();
     }
 
     public void delete(int position) {
-        groups.remove(position);
+        dataSet.remove(position);
         notifyItemRemoved(position);
     }
 
     public void delete(Group group) {
-        int position = groups.indexOf(group);
+        int position = dataSet.indexOf(group);
         delete(position);
     }
 
@@ -81,5 +84,19 @@ public class GroupListAdapter extends RecyclerView.Adapter {
             this.group = group;
             groupName.setText(group.getName());
         }
+    }
+    public void filter(String charText) {
+        charText = charText.toLowerCase();
+        dataSet = new ArrayList<>();
+        if (charText.length() == 0) {
+            dataSet.addAll(cleanCopyDataSet);
+        } else {
+            for (Group item : cleanCopyDataSet) {
+                if (item.toString().toLowerCase().contains(charText)) {
+                    dataSet.add(item);
+                }
+            }
+        }
+        notifyDataSetChanged();
     }
 }

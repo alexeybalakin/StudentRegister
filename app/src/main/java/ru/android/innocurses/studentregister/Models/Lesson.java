@@ -28,6 +28,13 @@ public class Lesson {
         this.id = System.nanoTime();
     }
 
+    public Lesson(String name, Date startTime, Date finishTime) {
+        this.name = name;
+        this.startTime = startTime;
+        this.finishTime = finishTime;
+        this.id = System.nanoTime();
+    }
+
     public String getName() {
         return name;
     }

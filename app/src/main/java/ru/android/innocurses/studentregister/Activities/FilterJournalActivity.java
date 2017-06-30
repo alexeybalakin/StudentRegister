@@ -22,7 +22,7 @@ public class FilterJournalActivity extends Activity {
     EditText etFilter;
     Button bFilter;
     ArrayAdapter<Journal> arrayAdapter;
-    ArrayList<Journal> journals = new ArrayList<>(ManagerJournal.journals);
+  //  ArrayList<Journal> journals = new ArrayList<>(ManagerJournal.journals);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +35,7 @@ public class FilterJournalActivity extends Activity {
         bFilter = (Button) findViewById(R.id.btFilterJournal);
 
         //Создаем адаптер
-        arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, journals);
+ //       arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, journals);
         if (savedInstanceState != null){
             etFilter.setText(savedInstanceState.getString("filterJournal"));
             arrayAdapter.getFilter().filter(etFilter.getText());

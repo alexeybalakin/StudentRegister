@@ -64,7 +64,7 @@ public class MainActivity extends Activity {
                     startActivity(new Intent(context,AdminActivity.class));
                 }
 
-                else startActivity(new Intent(context, GroupsActivity.class));
+                else startActivity(new Intent(context, StudentsActivity.class));
                 }
             }
         });

@@ -1,8 +1,12 @@
 package ru.android.innocurses.studentregister.Activities;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,16 +18,19 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
+import ru.android.innocurses.studentregister.Adapters.StudentListAdapter;
 import ru.android.innocurses.studentregister.Managers.ManagerGroups;
 import ru.android.innocurses.studentregister.Models.Group;
 import ru.android.innocurses.studentregister.Models.Student;
 import ru.android.innocurses.studentregister.R;
 
 public class FilterStudentsActivity extends Activity {
-    ListView lvStudents;
+
     EditText etFilter;
-    Button bFilter;
-    ArrayAdapter<Student> arrayAdapter;
+
+    Fragment fragmentStudents;
+    RecyclerView rv;
+
     List<Student> students = new ArrayList<>(ManagerGroups.groups.get("Group#1").getStudents());
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,44 +43,42 @@ public class FilterStudentsActivity extends Activity {
             students = group.getStudents();
         }
 
-
-        lvStudents = (ListView) findViewById(R.id.lvFilterStudents);
         etFilter = (EditText)findViewById(R.id.etFilterStudents);
-        bFilter = (Button)findViewById(R.id.btFilterStudents);
-
-        //Создаем адаптер
-        arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, students);
-        //Присваиваем адаптер списку
-        lvStudents.setAdapter(arrayAdapter);
-
-
-        bFilter.setOnClickListener(new View.OnClickListener() {
+         fragmentStudents = getFragmentManager().findFragmentById(R.id.fragmentFilterStudents);
+        rv = (RecyclerView)fragmentStudents.getView().findViewById(R.id.rvStudents);
+        etFilter.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onClick(View v) {
-                arrayAdapter.getFilter().filter(etFilter.getText());
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String text = etFilter.getText().toString().toLowerCase();
+                ((StudentListAdapter)rv.getAdapter()).filter(text);
+
             }
         });
-        lvStudents.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent i = new Intent(FilterStudentsActivity.this, ProfileActivity.class);
-        i.putExtra("student", arrayAdapter.getItem(position));
-        startActivity(i);
-            }
-        });
+
+
 
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putString("filterStudents",etFilter.getText().toString());
+//        outState.putString("filterStudents",etFilter.getText().toString());
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        etFilter.setText(savedInstanceState.getString("filterStudents"));
-        arrayAdapter.getFilter().filter(etFilter.getText());
+//        etFilter.setText(savedInstanceState.getString("filterStudents"));
+//        arrayAdapter.getFilter().filter(etFilter.getText());
     }
 }

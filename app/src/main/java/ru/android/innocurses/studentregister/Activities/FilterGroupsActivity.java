@@ -1,8 +1,12 @@
 package ru.android.innocurses.studentregister.Activities;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -13,17 +17,21 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import ru.android.innocurses.studentregister.Adapters.GroupListAdapter;
 import ru.android.innocurses.studentregister.Managers.ManagerGroups;
 import ru.android.innocurses.studentregister.Models.Group;
 import ru.android.innocurses.studentregister.Models.Student;
 import ru.android.innocurses.studentregister.R;
 
 public class FilterGroupsActivity extends Activity {
-    ListView lvGroups;
+
     EditText etFilter;
-    Button bFilter;
-    ArrayAdapter<Group> arrayAdapter;
-    ArrayList<Group> groups = new ArrayList<>(ManagerGroups.groups.values());
+
+//    ArrayAdapter<Group> arrayAdapter;
+//    ArrayList<Group> groups = new ArrayList<>(ManagerGroups.groups.values());
+    Fragment fragmentGroups;
+    RecyclerView rv;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +39,28 @@ public class FilterGroupsActivity extends Activity {
         setContentView(R.layout.activity_filter_groups);
         Log.i("MyLog", "onCreate_Groups");
 
-       // lvGroups = (ListView) findViewById(R.id.lvFilterGroups);
         etFilter = (EditText) findViewById(R.id.etFilterGroups);
-        bFilter = (Button) findViewById(R.id.btFilterGroups);
+        fragmentGroups = getFragmentManager().findFragmentById(R.id.fragmentFilterGroups);
+        rv = (RecyclerView)fragmentGroups.getView().findViewById(R.id.rvGroups);
+
+        etFilter.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String text = etFilter.getText().toString().toLowerCase();
+                ((GroupListAdapter)rv.getAdapter()).filter(text);
+            }
+        });
 
         //Создаем адаптер
 //        arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, groups);

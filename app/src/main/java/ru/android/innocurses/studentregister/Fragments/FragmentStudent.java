@@ -11,37 +11,36 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+import java.util.List;
 
-import ru.android.innocurses.studentregister.Activities.FilterStudentsActivity;
+import ru.android.innocurses.studentregister.Activities.ProfileActivity;
 import ru.android.innocurses.studentregister.Activities.StudentsActivity;
 import ru.android.innocurses.studentregister.Adapters.GroupListAdapter;
+import ru.android.innocurses.studentregister.Adapters.StudentListAdapter;
 import ru.android.innocurses.studentregister.Managers.ManagerGroups;
 import ru.android.innocurses.studentregister.Models.Group;
+import ru.android.innocurses.studentregister.Models.Student;
 import ru.android.innocurses.studentregister.R;
 
 /**
- * Created by admin on 28.06.2017.
+ * Created by admin on 29.06.2017.
  */
 
-public class FragmentGroups extends Fragment {
-    private RecyclerView rvGroups;
+public class FragmentStudent extends Fragment {
+    private RecyclerView rvStudents;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View fragment = inflater.inflate(R.layout.fragment_groups,container,true);
+        View fragment = inflater.inflate(R.layout.fragment_students,container,true);
 
-        rvGroups = (RecyclerView) fragment.findViewById(R.id.rvGroups);
-        ArrayList<Group> groups = new ArrayList<>(ManagerGroups.groups.values());
+        rvStudents = (RecyclerView) fragment.findViewById(R.id.rvStudents);
+        List<Student> students = ManagerGroups.groups.get("Group#1").getStudents();
 
-        GroupListAdapter groupListAdapter = new GroupListAdapter(groups);
-        rvGroups.setAdapter(groupListAdapter);
-        rvGroups.setLayoutManager(new LinearLayoutManager(getActivity()));
-        groupListAdapter.onItemClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getActivity(), FilterStudentsActivity.class));
-            }
-        });
+
+
+        final StudentListAdapter studentListAdapter = new StudentListAdapter(students);
+        rvStudents.setAdapter(studentListAdapter);
+        rvStudents.setLayoutManager(new LinearLayoutManager(getActivity()));
         return fragment;
     }
 }
