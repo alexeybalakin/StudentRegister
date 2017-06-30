@@ -8,12 +8,10 @@ import android.widget.Button;
 
 import ru.android.innocurses.studentregister.R;
 
-import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
-
 public class AdminActivity extends Activity {
     Button bAdminGroups;
     Button bAdminStudents;
-    Button bAdminJournals;
+    Button bAdminLessons;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +19,7 @@ public class AdminActivity extends Activity {
         setContentView(R.layout.activity_admin);
 
         bAdminGroups = (Button) findViewById(R.id.bAdminGroups);
-        bAdminJournals = (Button) findViewById(R.id.bAdminJournals);
+        bAdminLessons = (Button) findViewById(R.id.bAdminLessons);
         bAdminStudents = (Button) findViewById(R.id.bAdminStudents);
 
         bAdminGroups.setOnClickListener(new View.OnClickListener() {
@@ -38,10 +36,10 @@ public class AdminActivity extends Activity {
             }
         });
 
-        bAdminJournals.setOnClickListener(new View.OnClickListener() {
+        bAdminLessons.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AdminActivity.this, FilterJournalActivity.class));
+                startActivity(new Intent(AdminActivity.this, AddLessonActivity.class));
             }
         });
 

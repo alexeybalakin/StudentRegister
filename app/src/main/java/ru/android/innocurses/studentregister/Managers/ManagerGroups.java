@@ -10,6 +10,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import ru.android.innocurses.studentregister.Models.Contact;
+import ru.android.innocurses.studentregister.Models.ContactType;
 import ru.android.innocurses.studentregister.Models.Group;
 import ru.android.innocurses.studentregister.Models.Journal;
 import ru.android.innocurses.studentregister.Models.Lesson;
@@ -28,14 +30,22 @@ public class ManagerGroups {
         groups.put("Group#4", new Group("Group#4"));
         groups.put("Group#5", new Group("Group#5"));
 
+        //Создаем список контактов
+        List<Contact> contactlist = new ArrayList<>();
+        contactlist.add(new Contact("+79061234590", ContactType.PHONE));
+        contactlist.add(new Contact("mymail@gmail.com", ContactType.EMAIL));
+        contactlist.add(new Contact("@student", ContactType.TELEGRAM));
+        contactlist.add(new Contact("mymail@gmail.com", ContactType.SKYPE));
+        contactlist.add(new Contact("vk.com", ContactType.VK));
+
         //Добавляем студентов в группу #1
         List<Student> students = new ArrayList<>();
-        students.add(new Student(new Date(),1l,"Иван", "Иванович","Иванов"));
-        students.add(new Student(new Date(),2l,"Петр", "Петрович","Петров"));
-        students.add(new Student(new Date(),3l,"Сидор", "Сидорович","Сидоров"));
-        students.add(new Student(new Date(),4l,"Николай", "Николаевич","Николаев"));
-        students.add(new Student(new Date(),5l,"Семен", "Семенович","Семенов"));
-        students.add(new Student(new Date(),5l,"Семен", "Андреевич","Зеленкин"));
+        students.add(new Student(new Date(),1l,"Иван", "Иванович","Иванов", contactlist));
+        students.add(new Student(new Date(),2l,"Петр", "Петрович","Петров", contactlist));
+        students.add(new Student(new Date(),3l,"Сидор", "Сидорович","Сидоров", contactlist));
+        students.add(new Student(new Date(),4l,"Николай", "Николаевич","Николаев", contactlist));
+        students.add(new Student(new Date(),5l,"Семен", "Семенович","Семенов", contactlist));
+        students.add(new Student(new Date(),5l,"Семен", "Андреевич","Зеленкин", contactlist));
         groups.get("Group#1").setStudents(students);
 
         // Создаем список лекцтй
@@ -54,6 +64,8 @@ public class ManagerGroups {
                 i++;
             }
         }
+
+
 
     }
 

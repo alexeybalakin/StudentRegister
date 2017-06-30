@@ -89,6 +89,15 @@ public class Student implements Serializable {
         this.id = System.nanoTime();
         this.contacts = new ArrayList<>();
     }
+    public Student(Date dateOfBirth, Long groupId, String firstName, String surname, String secondName, List<Contact> contacts) {
+        this.dateOfBirth = dateOfBirth;
+        this.groupId = groupId;
+        this.firstName = firstName;
+        this.surname = surname;
+        this.secondName = secondName;
+        this.id = System.nanoTime();
+        this.contacts = contacts;
+    }
 
     @Override
     public int hashCode() {

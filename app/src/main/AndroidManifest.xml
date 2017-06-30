@@ -32,16 +32,16 @@
             android:name=".Activities.FilterGroupsActivity"
             android:launchMode="singleTask"
             android:windowSoftInputMode="stateHidden">
-
         </activity>
         <activity
             android:name=".Activities.FilterStudentsActivity"
-            android:launchMode="singleTask"
-            >
+            android:launchMode="singleTask">
         </activity>
-        <activity android:name=".Activities.FilterJournalActivity"
-                  android:launchMode="singleTask"
-            >
+        <activity
+            android:name=".Activities.FilterJournalActivity"
+            android:launchMode="singleTask">
+        </activity>
+        <activity android:name=".Activities.AddLessonActivity">
         </activity>
     </application>
 
