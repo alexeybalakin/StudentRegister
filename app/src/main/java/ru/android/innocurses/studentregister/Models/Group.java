@@ -11,12 +11,21 @@ public class Group implements Serializable {
     private String name;
     private Long id;
     private List<Student> students;
+    private Contact alertPhone;
 
     public Group(String name) {
         this.name = name;
         this.id = System.nanoTime();
         this.students = new ArrayList<>();
     }
+
+    public Group(String name, Contact alertPhone) {
+        this.name = name;
+        this.alertPhone = alertPhone;
+        this.id = System.nanoTime();
+        this.students = new ArrayList<>();
+    }
+
 
     public String getName() {
         return name;
@@ -41,6 +50,11 @@ public class Group implements Serializable {
     @Override
     public String toString() {
         return name;
+    }
+
+    public String getPhoneNumber(){
+         return alertPhone.getValue();
+
     }
 }
 

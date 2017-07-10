@@ -20,7 +20,6 @@
         android:id="@+id/etTime"
         android:layout_marginTop="16dp"
         android:layout_margin="4dp"
-
         android:layout_below="@id/etDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -33,6 +32,7 @@
         android:layout_toRightOf="@id/etDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:inputType="time"
         android:text="Set Date"/>
 
     <Button
@@ -51,7 +51,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:text="Title"/>
+        android:hint="Title"/>
 
     <EditText
         android:id="@+id/etDescr"
@@ -60,7 +60,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:text="Description"/>
+        android:hint="Description"/>
 
     <Button
         android:id="@+id/bSubmit"

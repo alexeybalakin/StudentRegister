@@ -1,12 +1,18 @@
 package ru.android.innocurses.studentregister.Adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
+import android.util.Log;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +21,7 @@ import java.util.List;
 
 
 import ru.android.innocurses.studentregister.Activities.ProfileActivity;
+import ru.android.innocurses.studentregister.Fragments.FragmentStudent;
 import ru.android.innocurses.studentregister.Models.Student;
 import ru.android.innocurses.studentregister.R;
 
@@ -25,10 +32,13 @@ import ru.android.innocurses.studentregister.R;
 public class StudentListAdapter extends Adapter {
     private List<Student> dataSet;
     private  final List<Student> cleanCopyDataSet;
+    private Context context;
+    public Student selectedStudent;
 
 
 
-    public StudentListAdapter(List<Student> students) {
+    public StudentListAdapter(Context context, List<Student> students) {
+        this.context = context;
         this.dataSet = students;
         this.cleanCopyDataSet = students;
 
@@ -51,20 +61,29 @@ public class StudentListAdapter extends Adapter {
         return dataSet.size();
     }
 
+    public Student getItem (int position){
+        return dataSet.get(position);
+    }
 
 
 
-    private class StudentHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+    private class StudentHolder extends RecyclerView.ViewHolder implements View.OnClickListener,
+            View.OnCreateContextMenuListener {
 
         private final TextView studentName;
         private Student student;
+
 
         public StudentHolder(View itemView) {
             super(itemView);
             studentName = (TextView) itemView.findViewById(R.id.tvGroup);
 
             itemView.setOnClickListener(this);
+            itemView.setOnCreateContextMenuListener(this);
         }
+
+
 
         public void bind(Student student) {
             this.student = student;
@@ -77,6 +96,16 @@ public class StudentListAdapter extends Adapter {
                 i.putExtra("student", student);
                 v.getContext().startActivity(i);
         }
+
+        @Override
+        public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+
+            MenuInflater menuInflater = ((Activity)context).getMenuInflater();
+            menuInflater.inflate(R.menu.menu_student, menu);
+            selectedStudent =  dataSet.get(getAdapterPosition());
+        }
+
+
     }
     public void filter(String charText) {
         charText = charText.toLowerCase();

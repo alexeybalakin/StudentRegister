@@ -41,8 +41,10 @@
             android:name=".Activities.FilterJournalActivity"
             android:launchMode="singleTask">
         </activity>
-        <activity android:name=".Activities.AddLessonActivity">
+    <activity android:name=".Activities.AddLessonActivity">
+    </activity>
+        <activity android:name=".Activities.SettingsActivity">
         </activity>
-    </application>
-
+            </application>
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
 </manifest>

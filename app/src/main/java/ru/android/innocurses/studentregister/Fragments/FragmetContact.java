@@ -7,8 +7,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +42,7 @@ public class FragmetContact extends Fragment {
         ContactListAdapter contactListAdapter = new ContactListAdapter(contacts);
         rvContacts.setAdapter(contactListAdapter);
         rvContacts.setLayoutManager(new LinearLayoutManager(getActivity()));
+
         return fragment;
     }
 
@@ -49,4 +52,10 @@ public class FragmetContact extends Fragment {
         student = (Student) getActivity().getIntent().getSerializableExtra("student");
 
     }
+
+//    @Override
+//    public boolean onContextItemSelected(MenuItem item) {
+//        Toast.makeText(getActivity(),"Klick", Toast.LENGTH_SHORT).show();
+//        return super.onContextItemSelected(item);
+//    }
 }

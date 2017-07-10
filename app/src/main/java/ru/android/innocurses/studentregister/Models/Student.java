@@ -99,6 +99,13 @@ public class Student implements Serializable {
         this.contacts = contacts;
     }
 
+    public Student( String firstName, String surname, String secondName) {
+
+        this.firstName = firstName;
+        this.surname = surname;
+        this.secondName = secondName;
+    }
+
     @Override
     public int hashCode() {
         return (int) (21+id*42);
@@ -115,5 +122,15 @@ public class Student implements Serializable {
     @Override
     public String toString() {
         return  secondName+ " "+firstName+" "+surname;
+    }
+
+    public String getPhoneNumber(){
+        for(Contact contact:contacts){
+            if (contact.getType() == ContactType.PHONE){
+                return contact.getValue();
+            }
+        }
+
+        return "";
     }
 }

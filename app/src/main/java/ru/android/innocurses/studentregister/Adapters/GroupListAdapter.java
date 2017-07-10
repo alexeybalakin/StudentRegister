@@ -1,7 +1,11 @@
 package ru.android.innocurses.studentregister.Adapters;
 
+import android.app.Activity;
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -22,10 +26,13 @@ public class GroupListAdapter extends RecyclerView.Adapter {
     private  List<Group> dataSet;
     private  final List<Group> cleanCopyDataSet;
     private View.OnClickListener itemClickListener;
+    private Context context;
+    public Group selectedGroup;
 
-    public GroupListAdapter(List<Group> groups) {
+    public GroupListAdapter(List<Group> groups, Context context) {
         this.dataSet = groups;
         this.cleanCopyDataSet = groups;
+        this.context = context;
     }
 
     @Override
@@ -63,7 +70,7 @@ public class GroupListAdapter extends RecyclerView.Adapter {
         this.itemClickListener = clickListener;
     }
 
-    private class GroupHolder extends RecyclerView.ViewHolder {
+    private class GroupHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener{
 
         private final TextView groupName;
         private Group group;
@@ -78,11 +85,20 @@ public class GroupListAdapter extends RecyclerView.Adapter {
                     startGroup(view, group);
                 }
             });
+            itemView.setOnCreateContextMenuListener(this);
         }
 
         public void bind(Group group) {
             this.group = group;
             groupName.setText(group.getName());
+        }
+
+        @Override
+        public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+            MenuInflater menuInflater = ((Activity)context).getMenuInflater();
+            menuInflater.inflate(R.menu.menu_group,menu);
+            selectedGroup  =  dataSet.get(getAdapterPosition());
+
         }
     }
     public void filter(String charText) {

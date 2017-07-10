@@ -57,7 +57,7 @@ public class AddLessonActivity extends Activity {
         builder.setPositiveButton("ДА", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.dismiss();
+                 dialogInterface.dismiss();
 
             }
         });

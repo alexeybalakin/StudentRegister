@@ -4,6 +4,10 @@ package ru.android.innocurses.studentregister.Managers;
  * Created by Alexey Balakin on 13.06.2017.
  */
 
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -15,16 +19,18 @@ import ru.android.innocurses.studentregister.Models.ContactType;
 import ru.android.innocurses.studentregister.Models.Group;
 import ru.android.innocurses.studentregister.Models.Journal;
 import ru.android.innocurses.studentregister.Models.Lesson;
+import ru.android.innocurses.studentregister.Models.SQLite.DBHelper;
 import ru.android.innocurses.studentregister.Models.Student;
 
 public class ManagerGroups {
     public static Map<String,Group> groups = new HashMap<>();
     public static List<Journal> journalList = new ArrayList<>();
+    public static  Context context = null;
 
     static{
 
         //Заполняем список групп
-        groups.put("Group#1", new Group("Group#1"));
+        groups.put("Group#1", new Group("Group#1", new Contact("+75551234567",ContactType.PHONE)));
         groups.put("Group#2", new Group("Group#2"));
         groups.put("Group#3", new Group("Group#3"));
         groups.put("Group#4", new Group("Group#4"));
@@ -34,7 +40,7 @@ public class ManagerGroups {
         List<Contact> contactlist = new ArrayList<>();
         contactlist.add(new Contact("+79061234590", ContactType.PHONE));
         contactlist.add(new Contact("mymail@gmail.com", ContactType.EMAIL));
-        contactlist.add(new Contact("@student_tele", ContactType.TELEGRAM));
+        contactlist.add(new Contact("@student_telegram", ContactType.TELEGRAM));
         contactlist.add(new Contact("student_skype", ContactType.SKYPE));
         contactlist.add(new Contact("vk.com", ContactType.VK));
 
@@ -65,14 +71,20 @@ public class ManagerGroups {
             }
         }
 
+    }
 
+     public ManagerGroups(Context context) {
+        this.context = context;
 
     }
 
-    public ManagerGroups() {
-
-
-    }
+//private  static class ManagerGroupsHolder{
+//        private final static ManagerGroups instance = new ManagerGroups(context);
+//    }
+//
+//    public  static ManagerGroups getInstance(){
+//        return ManagerGroupsHolder.instance;
+//    }
 
     public  void addGroup(String groupName) {
         groups.put(groupName, new Group(groupName));
@@ -85,10 +97,25 @@ public class ManagerGroups {
     public void printGroups (){
         for (Map.Entry gr:groups.entrySet()){
             System.out.println(gr.getKey());
+
+
         }
     }
     public Group getGroup(String name){
         return groups.get(name);
+    }
+    public static List<Student> getStudents (){
+        List<Student> students = new ArrayList<>();
+        DBHelper helper = new DBHelper(context,"studentDB", null, 1);
+        SQLiteDatabase database = helper.getWritableDatabase();
+         Cursor cursor = database.query("students", null, null, null, null, null, null);
+        while(cursor.moveToNext()){
+            Student student =  new Student(cursor.getString(cursor.getColumnIndex("firstname")),
+                    cursor.getString(cursor.getColumnIndex("surname")),
+                    cursor.getString(cursor.getColumnIndex("secondname")));
+            students.add(student);
+        }
+        return students;
     }
 
 }

@@ -35,6 +35,12 @@ public class Lesson {
         this.id = System.nanoTime();
     }
 
+    public Lesson(String name, String description, Date startTime) {
+        this.name = name;
+        this.description = description;
+        this.startTime = startTime;
+    }
+
     public String getName() {
         return name;
     }

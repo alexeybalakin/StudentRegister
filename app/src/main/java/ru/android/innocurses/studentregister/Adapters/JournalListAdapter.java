@@ -1,8 +1,12 @@
 package ru.android.innocurses.studentregister.Adapters;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
@@ -27,12 +31,15 @@ import ru.android.innocurses.studentregister.R;
 public class JournalListAdapter extends RecyclerView.Adapter{
     private List<Journal> dataSet;
     private  final List<Journal> cleanCopyDataSet;
+    private Context context;
+    public Journal selectedJournal;
 
 
 
-    public JournalListAdapter(List<Journal> journals) {
+    public JournalListAdapter(List<Journal> journals, Context context) {
         this.dataSet = journals;
         this.cleanCopyDataSet = journals;
+        this.context = context;
 
     }
 
@@ -56,7 +63,7 @@ public class JournalListAdapter extends RecyclerView.Adapter{
 
 
 
-    private class JournalHolder extends RecyclerView.ViewHolder  {
+    private class JournalHolder extends RecyclerView.ViewHolder  implements View.OnCreateContextMenuListener{
 
         private TextView tvLesson;
         private CheckBox cbPresents;
@@ -66,6 +73,7 @@ public class JournalListAdapter extends RecyclerView.Adapter{
             super(itemView);
             tvLesson = (TextView) itemView.findViewById(R.id.tvLesson);
             cbPresents = (CheckBox) itemView.findViewById(R.id.cbPresents);
+            itemView.setOnCreateContextMenuListener(this);
 
         }
 
@@ -76,6 +84,12 @@ public class JournalListAdapter extends RecyclerView.Adapter{
         }
 
 
+        @Override
+        public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+            MenuInflater menuInflater = ((Activity)context).getMenuInflater();
+            menuInflater.inflate(R.menu.menu_journal, menu);
+            selectedJournal =  dataSet.get(getAdapterPosition());
+        }
     }
     public void filter(String charText) {
         charText = charText.toLowerCase();
